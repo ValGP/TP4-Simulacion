@@ -1,0 +1,10 @@
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\TP4-Final\bin\Debug\TP4-Final.exe.config
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\TP4-Final\bin\Debug\TP4-Final.exe
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\TP4-Final\bin\Debug\TP4-Final.pdb
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\TP4-Final\obj\Debug\TP4-Final.csproj.AssemblyReference.cache
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\TP4-Final\obj\Debug\TP4_Final.Properties.Resources.resources
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\TP4-Final\obj\Debug\TP4-Final.csproj.GenerateResource.cache
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\TP4-Final\obj\Debug\TP4-Final.csproj.CoreCompileInputs.cache
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\TP4-Final\obj\Debug\TP4-Final.exe
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\TP4-Final\obj\Debug\TP4-Final.pdb
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\TP4-Final\obj\Debug\TP4_Final.Simulacion.resources
