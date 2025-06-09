@@ -106,7 +106,7 @@ namespace TP4_Final
 
             for (int i = 0; i < cantidadEmpleadosDelivery; i++)
             {
-                var fin = new EventoFin("Fin Delivery", distribuciones[10], i)
+                var fin = new EventoFin("Fin Delivery", distribuciones[9], i)
                 {
                     Hora = double.PositiveInfinity
                 };
@@ -115,7 +115,7 @@ namespace TP4_Final
 
             for (int i = 0; i < cantidadEmpleadosLlevar; i++)
             {
-                var fin = new EventoFin("Fin Llevar", distribuciones[9], i)
+                var fin = new EventoFin("Fin Llevar", distribuciones[10], i)
                 {
                     Hora = double.PositiveInfinity
                 };

@@ -56,8 +56,8 @@ namespace TP4_Final
                 {6,  new Exponencial(mdAtendMostrador)},
                 {7,  new Exponencial(mdAtendAutoservicio)},
                 {8,  new Exponencial(mdAtendOnline)},
-                {9,  new Exponencial(mdAtendLlevar)},
-                {10, new Exponencial(mdAtendDelivery)},
+                {9,  new Exponencial(mdAtendDelivery)},
+                {10, new Exponencial(mdAtendLlevar)},
             };
 
             // 3) Creamos el gestor y simulamos
