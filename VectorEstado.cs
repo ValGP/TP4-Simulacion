@@ -61,6 +61,7 @@ namespace TP4_Final
         {
             Evento = "Inicializacion";
             Reloj = 0;
+            _limitarCola = limitarCola;
 
             // Generacion Llegadas e inicializacion
             LlegadaMostrador = new EventoLlegada("Llegada Mostrador", distribuciones[1]);
@@ -149,7 +150,7 @@ namespace TP4_Final
 
             // Lista de Clientes
             ListaClientes = new List<Cliente>();
-            _limitarCola = limitarCola;
+            
         }
 
         /// <summary>
