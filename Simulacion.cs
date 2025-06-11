@@ -66,12 +66,14 @@ namespace TP4_Final
 
             // 3) Creamos el gestor y simulamos
 			bool encuestaActiva = radioEncuesta.Checked;
+            bool limitarCola = chkLimitarCola.Checked;
             var gestor = new GestorSimulacion(
                 numIteraciones: totalIteraciones,
                 mostrarDesde: mostrarDesde,
                 mostrarHasta: mostrarHasta,
                 distribuciones: distribs,
-				habilitarEncuesta: encuestaActiva
+				habilitarEncuesta: encuestaActiva,
+                limitarCola: limitarCola
             );
             gestor.Ejecutar();
 
@@ -98,6 +100,8 @@ namespace TP4_Final
             if (encuestaActiva) servicios.Add("Encuesta");
             foreach (var s in servicios)
             {
+				if (s == "Encuesta") continue;
+
                 TablaVectorEstado.Columns.Add($"RND_Llegada{s}", $"RND Llegada {s}");
                 TablaVectorEstado.Columns.Add($"Tiempo_Llegada{s}", $"Tiempo Llegada {s}");
                 TablaVectorEstado.Columns.Add($"Hora_Llegada{s}", $"Hora Llegada {s}");
@@ -232,6 +236,21 @@ namespace TP4_Final
                 TablaVectorEstado.Columns.Add("TotalEncuesta", "Total En");
             TablaVectorEstado.Columns.Add("TotalGeneral", "Total General");
 
+            if (chkLimitarCola.Checked)
+            {
+                TablaVectorEstado.Columns.Add("PerdidosMostrador", "Perdidos M");
+                TablaVectorEstado.Columns.Add("PerdidosAutoservicio", "Perdidos A");
+                TablaVectorEstado.Columns.Add("PerdidosOnline", "Perdidos O");
+                TablaVectorEstado.Columns.Add("PerdidosDelivery", "Perdidos D");
+                TablaVectorEstado.Columns.Add("PerdidosLlevar", "Perdidos L");
+
+                TablaVectorEstado.Columns.Add("PerdidosGeneral", "Perdidos General");
+            }
+
+            
+
+            
+
             // 9) Columnas de estado de cada cliente (hasta el máximo observado)
             int maxClientes = resultados.Last().ListaClientes.Count;
 
@@ -293,10 +312,26 @@ namespace TP4_Final
             int atendidosLlevar = finalEstado.Llevar.TotalClientesAtendidos;
             double promedioLlevar = atendidosLlevar > 0 ? esperaLlevar / atendidosLlevar : 0.0;
 
-            ////////////////////////////////////////////////////////////////////////////////////
-            ///
+            if (radioEncuesta.Checked)
+            {
+                double esperaEncuesta = finalEstado.ListaClientes
+                    .Where(c => c.Tipo == TipoCliente.Encuesta && c.HoraFinEspera >= c.HoraInicioEspera)
+                    .Sum(c => c.TiempoEnCola);
+                int atendidosEncuesta = finalEstado.Encuesta.TotalClientesAtendidos;
+                double promedioEncuesta = atendidosEncuesta > 0 ? esperaEncuesta / atendidosEncuesta : 0.0;
+                txtEsperaEncuesta.Text = promedioEncuesta.ToString("F4");
+            }
+            else
+            {
+                txtEsperaEncuesta.Text = "0.0";
+            }
 
-            double ocupacionMostrador = finalEstado.Mostrador.Empleados
+
+
+                ////////////////////////////////////////////////////////////////////////////////////
+                ///
+
+                double ocupacionMostrador = finalEstado.Mostrador.Empleados
                 .Sum(e => e.TiempoOcupado +
                             (e.Estado == EstadoEmpleado.Ocupado ? finalEstado.Reloj - e.HoraInicioOcupacion : 0.0));
 
@@ -322,7 +357,20 @@ namespace TP4_Final
                             (e.Estado == EstadoEmpleado.Ocupado ? finalEstado.Reloj - e.HoraInicioOcupacion : 0.0));
             double porcentajeOcupacionLlevar = (ocupacionLlevar / (finalEstado.Reloj * finalEstado.Llevar.Empleados.Count)) * 100;
 
-            // 2) Mostrar en el label
+            if (radioEncuesta.Checked)
+            {
+                double ocupacionEncuesta = finalEstado.Encuesta.Empleados
+                    .Sum(e => e.TiempoOcupado +
+                                (e.Estado == EstadoEmpleado.Ocupado ? finalEstado.Reloj - e.HoraInicioOcupacion : 0.0));
+                double porcentajeOcupacionEncuesta = (ocupacionEncuesta / (finalEstado.Reloj * finalEstado.Encuesta.Empleados.Count)) * 100;
+                txtOcupacionEncuesta.Text = porcentajeOcupacionEncuesta.ToString("F4");
+            }
+            else
+            {
+                txtOcupacionEncuesta.Text = "0.0";
+            }
+
+                // 2) Mostrar en el label
 
             txtEsperaMostrador.Text = promedioMostrador.ToString("F4");
             txtEsperaAutoservicio.Text = promedioAutoservicio.ToString("F4");
@@ -409,12 +457,13 @@ namespace TP4_Final
 			};
 
 			// 3) Creamos el gestor y simulamos
-			var gestor = new GestorSimulacionAct5(
+            
+            var gestor = new GestorSimulacionAct5(
 				numIteraciones: totalIteraciones,
 				mostrarDesde: mostrarDesde,
 				mostrarHasta: mostrarHasta,
 				distribuciones: distribs
-			);
+                );
 			gestor.Ejecutar();
 
 			// 4) Volcamos al DataGridView
@@ -726,5 +775,15 @@ namespace TP4_Final
 			//5) Mostrar estadisticas
 			MostrarEstadisticas(resultados.Last());
 		}
-	}
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

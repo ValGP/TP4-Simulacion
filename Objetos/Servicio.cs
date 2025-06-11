@@ -19,6 +19,11 @@ namespace TP4_Final
 
         /// <summary>Cola de clientes esperando atención.</summary>
         public Queue<Cliente> Cola { get; set; }
+        
+        /// <summary>Capacidad máxima de la cola. Si se supera, los clientes se pierden.</summary>
+        public int CapacidadCola { get; set; }
+        /// <summary>Cantidad de clientes que abandonaron por cola llena.</summary>
+        public int ClientesPerdidos { get; set; }
         /// <summary>Cliente actualmente en atención por cada empleado.</summary>
         public Cliente[] ClienteEnAtencion { get; set; }
 
@@ -39,7 +44,7 @@ namespace TP4_Final
         /// </summary>
         /// <param name="nombre">Nombre del servicio.</param>
         /// <param name="cantidadEmpleados">Número de empleados en este servicio.</param>
-        public Servicio(string nombre, int cantidadEmpleados)
+        public Servicio(string nombre, int cantidadEmpleados, int capacidadCola = int.MaxValue)
         {
             Nombre = nombre;
             Empleados = new List<Empleado>();
@@ -49,6 +54,8 @@ namespace TP4_Final
             }
 
             Cola = new Queue<Cliente>();
+            CapacidadCola = capacidadCola;
+            ClientesPerdidos = 0;
             TotalClientesAtendidos = 0;
             tiempoInicioOcupacionCompleta = -1;
             TiempoAcumuladoOcupacionCompleta = 0;
@@ -90,7 +97,15 @@ namespace TP4_Final
             }
             else
             {
-                // Todos ocupados: cliente va a la cola del servicio
+                // Todos ocupados: si la cola está llena, el cliente se pierde
+                if (Cola.Count >= CapacidadCola)
+                {
+                    ClientesPerdidos++;
+                    cliente.Estado = EstadoCliente.Finalizado;
+                    return false;
+                }
+
+                // Cliente espera en cola
                 cliente.HoraInicioEspera = relojActual;
                 Cola.Enqueue(cliente);
                 

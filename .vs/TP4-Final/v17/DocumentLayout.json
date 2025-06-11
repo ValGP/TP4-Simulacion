@@ -3,32 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\vectorestado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|c:\\users\\vale-\\onedrive\\desktop\\utn 2025\\sim\\tp4\\rar\\tp4-final\\tp4-final\\vectorestado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|solutionrelative:vectorestado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|c:\\users\\vale-\\onedrive\\desktop\\utn 2025\\sim\\tp4\\rar\\tp4-final\\tp4-final\\simulacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|solutionrelative:simulacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\simulacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|solutionrelative:simulacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\objetos\\servicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|solutionrelative:objetos\\servicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\gestorsimulacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|solutionrelative:gestorsimulacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\simulacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|solutionrelative:simulacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\simulacion.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|solutionrelative:simulacion.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|c:\\users\\vale-\\onedrive\\desktop\\utn 2025\\sim\\tp4\\rar\\tp4-final\\tp4-final\\objetos\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\objetos\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|solutionrelative:objetos\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\objetos\\servicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|solutionrelative:objetos\\servicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6C172D8E-A94F-42A0-84A4-36F84F80F4E8}|TP4-Final.csproj|C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\eventos\\evento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -70,8 +66,7 @@
               "RelativeToolTip": "Objetos\\Cliente.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-11T20:14:29.658Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-11T20:14:29.658Z"
             },
             {
               "$type": "Document",
@@ -81,27 +76,27 @@
               "RelativeDocumentMoniker": "VectorEstado.cs",
               "ToolTip": "C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\VectorEstado.cs",
               "RelativeToolTip": "VectorEstado.cs",
-              "ViewState": "AgIAAIwBAAAAAAAAAAAcwB8CAABOAAAAAAAAAA==",
+              "ViewState": "AgIAABQCAAAAAAAAAAAAAC4CAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-10T01:21:24.32Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "GestorSimulacion.cs",
               "DocumentMoniker": "C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\GestorSimulacion.cs",
               "RelativeDocumentMoniker": "GestorSimulacion.cs",
               "ToolTip": "C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\GestorSimulacion.cs",
               "RelativeToolTip": "GestorSimulacion.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAwwPwAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAAD4v10AAAB0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-10T00:10:44.162Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Simulacion.cs [Design]",
               "DocumentMoniker": "C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\Simulacion.cs",
               "RelativeDocumentMoniker": "Simulacion.cs",
@@ -113,33 +108,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Simulacion.cs",
-              "DocumentMoniker": "C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\Simulacion.cs",
-              "RelativeDocumentMoniker": "Simulacion.cs",
-              "ToolTip": "C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\Simulacion.cs",
-              "RelativeToolTip": "Simulacion.cs",
-              "ViewState": "AgIAAHwAAAAAAAAAAAAcwJAAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-08T18:46:19.806Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Simulacion.Designer.cs",
               "DocumentMoniker": "C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\Simulacion.Designer.cs",
               "RelativeDocumentMoniker": "Simulacion.Designer.cs",
               "ToolTip": "C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\Simulacion.Designer.cs",
               "RelativeToolTip": "Simulacion.Designer.cs",
-              "ViewState": "AgIAAJACAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-08T18:39:19.273Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "Simulacion.resx",
               "DocumentMoniker": "C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\Simulacion.resx",
               "RelativeDocumentMoniker": "Simulacion.resx",
@@ -151,20 +133,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Servicio.cs",
               "DocumentMoniker": "C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\Objetos\\Servicio.cs",
               "RelativeDocumentMoniker": "Objetos\\Servicio.cs",
               "ToolTip": "C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\Objetos\\Servicio.cs",
               "RelativeToolTip": "Objetos\\Servicio.cs",
-              "ViewState": "AgIAAHIAAAAAAAAAAAAkwJEAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAkwGkAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-08T00:43:09.508Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "Exponencial.cs",
               "DocumentMoniker": "C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\DistribucionExponencial\\Exponencial.cs",
               "RelativeDocumentMoniker": "DistribucionExponencial\\Exponencial.cs",
@@ -176,7 +158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "Distribucion.cs",
               "DocumentMoniker": "C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\DistribucionExponencial\\Distribucion.cs",
               "RelativeDocumentMoniker": "DistribucionExponencial\\Distribucion.cs",
@@ -188,7 +170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "Evento.cs",
               "DocumentMoniker": "C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\Eventos\\Evento.cs",
               "RelativeDocumentMoniker": "Eventos\\Evento.cs",
@@ -200,7 +182,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "Empleado.cs",
               "DocumentMoniker": "C:\\Users\\vale-\\OneDrive\\Desktop\\UTN 2025\\SIM\\TP4\\RAR\\TP4-Final\\TP4-Final\\Objetos\\Empleado.cs",
               "RelativeDocumentMoniker": "Objetos\\Empleado.cs",

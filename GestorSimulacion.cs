@@ -20,6 +20,8 @@ namespace TP4_Final
         private readonly int _mostrarDesde;
         private readonly int _mostrarHasta;
         private readonly bool _habilitarEncuesta;
+        private Random _random = new Random();
+        private readonly bool _limitarCola;
 
         /// <summary>
         /// Estados guardados para las iteraciones solicitadas.
@@ -38,13 +40,15 @@ namespace TP4_Final
             int mostrarDesde,
             int mostrarHasta,
             Dictionary<int, Distribucion> distribuciones,
-            bool habilitarEncuesta)
+            bool habilitarEncuesta,
+            bool limitarCola)
         {
             _numIteraciones = numIteraciones;
             _mostrarDesde = mostrarDesde;
             _mostrarHasta = mostrarHasta;
             _distribuciones = distribuciones;
             _habilitarEncuesta = habilitarEncuesta;
+            _limitarCola = limitarCola;
         }
 
         /// <summary>
@@ -53,10 +57,10 @@ namespace TP4_Final
         /// </summary>
         public void Ejecutar()
         {
-            var estado = new VectorEstado(_distribuciones);
+            var estado = new VectorEstado(_distribuciones, _limitarCola);
 
             // 1) Inicializo el estado inicial
-            Registros.Add(new VectorEstado(estado, _distribuciones, keep: true));
+            Registros.Add(new VectorEstado(estado, _distribuciones, keep: true, limitarCola: _limitarCola));
 
             for (int i = 0; i < _numIteraciones; i++)
             {
@@ -87,8 +91,9 @@ namespace TP4_Final
 
                 // 4) Ahora sí guardo (clono) el estado si está en el rango pedido
                 if (i >= _mostrarDesde && i <= _mostrarHasta)
-                    Registros.Add(new VectorEstado(estado, _distribuciones, keep: true));
-            
+                    Registros.Add(new VectorEstado(estado, _distribuciones, keep: true, limitarCola: _limitarCola));
+
+
             }
         }
 
@@ -241,8 +246,9 @@ namespace TP4_Final
         private void GenerarEncuestaSiCorresponde(VectorEstado ve)
         {
             if (!_habilitarEncuesta) return;
-            if (new Random().NextDouble() <= 0.15)
+            if (_random.NextDouble() <= 0.15)
             {
+                Console.WriteLine("Cliente Encuesta");
                 var clienteE = new Cliente(EstadoCliente.Esperando, TipoCliente.Encuesta, ve.Reloj);
                 bool inicioE = ve.Encuesta.AtenderCliente(clienteE, ve.Reloj);
                 ve.ListaClientes.Add(clienteE);

@@ -38,6 +38,8 @@ namespace TP4_Final
         private readonly int cantidadEmpleadosLlevar = 2;
         private readonly int cantidadEmpleadosEncuesta = 1;
 
+        private readonly bool _limitarCola;
+
         //Servicios
         //Cada servicio tiene su cola y su lista de empleados
         public Servicio Mostrador { get; set; }
@@ -55,7 +57,7 @@ namespace TP4_Final
         /// Constructor inicial: arma todo en tiempo 0
         /// </summary>
 
-        public VectorEstado(Dictionary<int, Distribucion> distribuciones)
+        public VectorEstado(Dictionary<int, Distribucion> distribuciones, bool limitarCola = false)
         {
             Evento = "Inicializacion";
             Reloj = 0;
@@ -137,16 +139,17 @@ namespace TP4_Final
 
             // Inicializacion Servicios
 
-            Mostrador = new Servicio("Mostrador", cantidadEmpleadosMostrador);
-            Autoservicio = new Servicio("Autoservicio", cantidadEmpleadosAutoservicio);
-            Online = new Servicio("Online", cantidadEmpleadosOnline);
-            Delivery = new Servicio("Delivery", cantidadEmpleadosDelivery);
-            Llevar = new Servicio("Llevar", cantidadEmpleadosLlevar);
-            Encuesta = new Servicio("Encuesta", cantidadEmpleadosEncuesta);
+            int cap = _limitarCola ? 5 : int.MaxValue;
+            Mostrador = new Servicio("Mostrador", cantidadEmpleadosMostrador, cap);
+            Autoservicio = new Servicio("Autoservicio", cantidadEmpleadosAutoservicio, cap);
+            Online = new Servicio("Online", cantidadEmpleadosOnline, cap);
+            Delivery = new Servicio("Delivery", cantidadEmpleadosDelivery, cap);
+            Llevar = new Servicio("Llevar", cantidadEmpleadosLlevar, cap);
+            Encuesta = new Servicio("Encuesta", cantidadEmpleadosEncuesta, cap);
 
             // Lista de Clientes
             ListaClientes = new List<Cliente>();
-
+            _limitarCola = limitarCola;
         }
 
         /// <summary>
@@ -154,8 +157,9 @@ namespace TP4_Final
         /// </summary>
         /// 
 
-        public VectorEstado(VectorEstado ve, Dictionary<int, Distribucion> distribuciones, bool keep = false)
+        public VectorEstado(VectorEstado ve, Dictionary<int, Distribucion> distribuciones, bool keep = false, bool limitarCola = false)
         {
+            _limitarCola = limitarCola;
             Evento = ve.Evento;
             Reloj = ve.Reloj;
 
@@ -249,10 +253,11 @@ namespace TP4_Final
 
         private Servicio CopiaServicio(Servicio s)
         {
-            var c = new Servicio(s.Nombre, s.Empleados.Count)
+            var c = new Servicio(s.Nombre, s.Empleados.Count, s.CapacidadCola)
             {
                 TotalClientesAtendidos = s.TotalClientesAtendidos,
-                TiempoAcumuladoOcupacionCompleta = s.TiempoAcumuladoOcupacionCompleta
+                TiempoAcumuladoOcupacionCompleta = s.TiempoAcumuladoOcupacionCompleta,
+                ClientesPerdidos = s.ClientesPerdidos
             };
 
             c.Empleados = s.Empleados
@@ -532,17 +537,37 @@ namespace TP4_Final
             if (encuestaActiva)
                 salida.Add(Encuesta.TotalClientesAtendidos.ToString());
 
-
-
-
             // 6) Total general
             int total = Mostrador.TotalClientesAtendidos
                       + Autoservicio.TotalClientesAtendidos
                       + Online.TotalClientesAtendidos
                       + Delivery.TotalClientesAtendidos
                       + Llevar.TotalClientesAtendidos
-                      +(encuestaActiva ? Encuesta.TotalClientesAtendidos : 0);
+                      + (encuestaActiva ? Encuesta.TotalClientesAtendidos : 0);
             salida.Add(total.ToString());
+
+            if (_limitarCola)
+            {
+                salida.Add(Mostrador.ClientesPerdidos.ToString());
+                salida.Add(Autoservicio.ClientesPerdidos.ToString());
+                salida.Add(Online.ClientesPerdidos.ToString());
+                salida.Add(Delivery.ClientesPerdidos.ToString());
+                salida.Add(Llevar.ClientesPerdidos.ToString());
+                
+            }
+
+                                 
+
+            if (_limitarCola)
+            {
+                int perdidos = Mostrador.ClientesPerdidos
+                          + Autoservicio.ClientesPerdidos
+                          + Online.ClientesPerdidos
+                          + Delivery.ClientesPerdidos
+                          + Llevar.ClientesPerdidos
+                          + (encuestaActiva ? Encuesta.ClientesPerdidos : 0);
+                salida.Add(perdidos.ToString());
+            }
 
             // 7) Estado de clientes hasta límite
             int count = 0;

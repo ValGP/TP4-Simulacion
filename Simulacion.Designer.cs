@@ -81,8 +81,14 @@
             this.btnSimularAct5 = new System.Windows.Forms.Button();
             this.btnSimularAct6 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioEncuesta = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioEncuesta = new System.Windows.Forms.RadioButton();
+            this.txtEsperaEncuesta = new System.Windows.Forms.TextBox();
+            this.txtOcupacionEncuesta = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.chkLimitarCola = new System.Windows.Forms.CheckBox();
+            this.label22 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TablaVectorEstado)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -532,7 +538,7 @@
             // 
             // btnSimularAct6
             // 
-            this.btnSimularAct6.Location = new System.Drawing.Point(1146, 57);
+            this.btnSimularAct6.Location = new System.Drawing.Point(1146, 35);
             this.btnSimularAct6.Name = "btnSimularAct6";
             this.btnSimularAct6.Size = new System.Drawing.Size(182, 19);
             this.btnSimularAct6.TabIndex = 47;
@@ -542,25 +548,18 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label21);
+            this.groupBox2.Controls.Add(this.label20);
+            this.groupBox2.Controls.Add(this.txtOcupacionEncuesta);
             this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Controls.Add(this.txtEsperaEncuesta);
             this.groupBox2.Controls.Add(this.radioEncuesta);
-            this.groupBox2.Location = new System.Drawing.Point(1143, 102);
+            this.groupBox2.Location = new System.Drawing.Point(1143, 63);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(185, 44);
+            this.groupBox2.Size = new System.Drawing.Size(185, 90);
             this.groupBox2.TabIndex = 48;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "7. Nuevo Servicio Encuesta";
-            // 
-            // radioEncuesta
-            // 
-            this.radioEncuesta.AutoSize = true;
-            this.radioEncuesta.Location = new System.Drawing.Point(6, 18);
-            this.radioEncuesta.Name = "radioEncuesta";
-            this.radioEncuesta.Size = new System.Drawing.Size(88, 17);
-            this.radioEncuesta.TabIndex = 0;
-            this.radioEncuesta.TabStop = true;
-            this.radioEncuesta.Text = "conEncuesta";
-            this.radioEncuesta.UseVisualStyleBackColor = true;
             // 
             // radioButton1
             // 
@@ -573,11 +572,77 @@
             this.radioButton1.Text = "sinEncuesta";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
+            // radioEncuesta
+            // 
+            this.radioEncuesta.AutoSize = true;
+            this.radioEncuesta.Location = new System.Drawing.Point(6, 18);
+            this.radioEncuesta.Name = "radioEncuesta";
+            this.radioEncuesta.Size = new System.Drawing.Size(88, 17);
+            this.radioEncuesta.TabIndex = 0;
+            this.radioEncuesta.TabStop = true;
+            this.radioEncuesta.Text = "conEncuesta";
+            this.radioEncuesta.UseVisualStyleBackColor = true;
+            // 
+            // txtEsperaEncuesta
+            // 
+            this.txtEsperaEncuesta.Location = new System.Drawing.Point(82, 40);
+            this.txtEsperaEncuesta.Name = "txtEsperaEncuesta";
+            this.txtEsperaEncuesta.Size = new System.Drawing.Size(97, 20);
+            this.txtEsperaEncuesta.TabIndex = 49;
+            // 
+            // txtOcupacionEncuesta
+            // 
+            this.txtOcupacionEncuesta.Location = new System.Drawing.Point(82, 65);
+            this.txtOcupacionEncuesta.Name = "txtOcupacionEncuesta";
+            this.txtOcupacionEncuesta.Size = new System.Drawing.Size(97, 20);
+            this.txtOcupacionEncuesta.TabIndex = 50;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(12, 47);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(64, 13);
+            this.label20.TabIndex = 51;
+            this.label20.Text = "EsperaProm";
+            this.label20.Click += new System.EventHandler(this.label20_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(12, 71);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(59, 13);
+            this.label21.TabIndex = 52;
+            this.label21.Text = "Ocupacion";
+            // 
+            // chkLimitarCola
+            // 
+            this.chkLimitarCola.AutoSize = true;
+            this.chkLimitarCola.Location = new System.Drawing.Point(940, 128);
+            this.chkLimitarCola.Name = "chkLimitarCola";
+            this.chkLimitarCola.Size = new System.Drawing.Size(138, 17);
+            this.chkLimitarCola.TabIndex = 49;
+            this.chkLimitarCola.Text = "Limitar Cola a 5 Clientes";
+            this.chkLimitarCola.UseVisualStyleBackColor = true;
+            this.chkLimitarCola.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(937, 106);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(73, 13);
+            this.label22.TabIndex = 50;
+            this.label22.Text = "4. Limitar Cola";
+            // 
             // Simulacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1495, 653);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.chkLimitarCola);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnSimularAct6);
             this.Controls.Add(this.btnSimularAct5);
@@ -693,6 +758,12 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton radioEncuesta;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtOcupacionEncuesta;
+        private System.Windows.Forms.TextBox txtEsperaEncuesta;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.CheckBox chkLimitarCola;
+        private System.Windows.Forms.Label label22;
     }
 }
 
