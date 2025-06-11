@@ -13,13 +13,12 @@ namespace TP4_Final
     /// Gestiona la ejecución de la simulación, registra los estados intermedios
     /// y permite acceder al historial de estados para visualización.
     /// </summary>
-    public class GestorSimulacion
+    public class GestorSimulacionAct6
     {
         private readonly Dictionary<int, Distribucion> _distribuciones;
         private readonly int _numIteraciones;
         private readonly int _mostrarDesde;
         private readonly int _mostrarHasta;
-        private readonly bool _habilitarEncuesta;
 
         /// <summary>
         /// Estados guardados para las iteraciones solicitadas.
@@ -33,18 +32,16 @@ namespace TP4_Final
         /// <param name="mostrarDesde">Índice de iteración desde el cual almacenar estados.</param>
         /// <param name="mostrarHasta">Índice de iteración hasta el cual almacenar estados.</param>
         /// <param name="distribuciones">Mapeo de distribuciones para generación de eventos.</param>
-        public GestorSimulacion(
+        public GestorSimulacionAct6(
             int numIteraciones,
             int mostrarDesde,
             int mostrarHasta,
-            Dictionary<int, Distribucion> distribuciones,
-            bool habilitarEncuesta)
+            Dictionary<int, Distribucion> distribuciones)
         {
             _numIteraciones = numIteraciones;
             _mostrarDesde = mostrarDesde;
             _mostrarHasta = mostrarHasta;
             _distribuciones = distribuciones;
-            _habilitarEncuesta = habilitarEncuesta;
         }
 
         /// <summary>
@@ -163,7 +160,7 @@ namespace TP4_Final
                     if (inicioL)
                     {
                         var finEvL = ve.FinesLlevar[clienteL.EmpleadoId];
-                        finEvL.GenerarProxima(ve.Reloj);
+                        finEvL.GenerarProxima(ve.Reloj,1);
                     }
                     break;
 
@@ -188,7 +185,6 @@ namespace TP4_Final
                         finEvA2.GenerarProxima(ve.Reloj);
                         ve.ListaClientes.Add(siguienteA);
                     }
-                    GenerarEncuestaSiCorresponde(ve);
                     break;
 
                 case EventoFin fin when fin.Nombre.Contains("Online"):
@@ -209,17 +205,6 @@ namespace TP4_Final
                         finEvD2.GenerarProxima(ve.Reloj);
                         ve.ListaClientes.Add(siguienteD);
                     }
-                    GenerarEncuestaSiCorresponde(ve);
-                    break;
-
-                case EventoFin fin when fin.Nombre.Contains("Encuesta"):
-                    var siguienteE = ve.Encuesta.LiberarEmpleado(fin.EmpleadoId, ve.Reloj);
-                    if (siguienteE != null)
-                    {
-                        var finEvE2 = ve.FinesEncuesta[fin.EmpleadoId];
-                        finEvE2.GenerarProxima(ve.Reloj);
-                        ve.ListaClientes.Add(siguienteE);
-                    }
                     break;
 
                 case EventoFin fin when fin.Nombre.Contains("Llevar"):
@@ -227,7 +212,7 @@ namespace TP4_Final
                     if (siguienteL != null)
                     {
                         var finEvL2 = ve.FinesLlevar[fin.EmpleadoId];
-                        finEvL2.GenerarProxima(ve.Reloj);
+                        finEvL2.GenerarProxima(ve.Reloj,1);
                         ve.ListaClientes.Add(siguienteL);
                     }
                     break;
@@ -235,22 +220,6 @@ namespace TP4_Final
                 default:
                     // Evento no contemplado
                     break;
-            }
-        }
-
-        private void GenerarEncuestaSiCorresponde(VectorEstado ve)
-        {
-            if (!_habilitarEncuesta) return;
-            if (new Random().NextDouble() <= 0.15)
-            {
-                var clienteE = new Cliente(EstadoCliente.Esperando, TipoCliente.Encuesta, ve.Reloj);
-                bool inicioE = ve.Encuesta.AtenderCliente(clienteE, ve.Reloj);
-                ve.ListaClientes.Add(clienteE);
-                if (inicioE)
-                {
-                    var finEv = ve.FinesEncuesta[clienteE.EmpleadoId];
-                    finEv.GenerarProxima(ve.Reloj);
-                }
             }
         }
 

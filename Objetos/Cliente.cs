@@ -20,6 +20,7 @@ namespace TP4_Final.Objetos
         Delivery,
         Online,
         Llevar,
+        Encuesta,
         Indefinido
     }
 

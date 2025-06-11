@@ -19,6 +19,8 @@ namespace TP4_Final
 
         /// <summary>Cola de clientes esperando atención.</summary>
         public Queue<Cliente> Cola { get; set; }
+        /// <summary>Cliente actualmente en atención por cada empleado.</summary>
+        public Cliente[] ClienteEnAtencion { get; set; }
 
         /// <summary>Total de clientes atendidos por este servicio.</summary>
         public int TotalClientesAtendidos { get; set; }
@@ -50,6 +52,7 @@ namespace TP4_Final
             TotalClientesAtendidos = 0;
             tiempoInicioOcupacionCompleta = -1;
             TiempoAcumuladoOcupacionCompleta = 0;
+            ClienteEnAtencion = new Cliente[cantidadEmpleados];
         }
 
         /// <summary>
@@ -74,6 +77,10 @@ namespace TP4_Final
                 libre.CantidadClientesAtendidos++;
                 libre.HoraInicioOcupacion = relojActual;
                 cliente.EmpleadoId = Empleados.IndexOf(libre);
+                cliente.Estado = EstadoCliente.SiendoAtendido;
+                cliente.HoraInicioEspera = relojActual;
+                cliente.HoraFinEspera = relojActual;
+                ClienteEnAtencion[cliente.EmpleadoId] = cliente;
                 TotalClientesAtendidos++;
                 // Si justo ahora todos quedaron ocupados, empezamos a contar ese periodo
                 if (TodosOcupados() && tiempoInicioOcupacionCompleta < 0)
@@ -84,8 +91,9 @@ namespace TP4_Final
             else
             {
                 // Todos ocupados: cliente va a la cola del servicio
+                cliente.HoraInicioEspera = relojActual;
                 Cola.Enqueue(cliente);
-                Console.WriteLine($"{Cola.Count}, {Cola}");
+                
                 return false;
                 
             }
@@ -98,7 +106,15 @@ namespace TP4_Final
         /// </summary>
         public Cliente LiberarEmpleado(int empleadoIndex, double relojActual)
         {
-            
+
+            var actual = ClienteEnAtencion[empleadoIndex];
+            if (actual != null)
+            {
+                actual.Estado = EstadoCliente.Finalizado;
+                actual.HoraFinAtencion = relojActual;
+                ClienteEnAtencion[empleadoIndex] = null;
+            }
+
 
             // 2) Si veníamos de un periodo de ocupación completa, cerrarlo
 
@@ -120,11 +136,14 @@ namespace TP4_Final
             if (Cola.Count > 0)
             {
                 var siguiente = Cola.Dequeue();
+                siguiente.Estado = EstadoCliente.SiendoAtendido;
+                siguiente.HoraFinEspera = relojActual;
                 Empleados[empleadoIndex].Estado = EstadoEmpleado.Ocupado;
                 Empleados[empleadoIndex].HoraInicioOcupacion = relojActual;
                 Empleados[empleadoIndex].CantidadClientesAtendidos++;
                 TotalClientesAtendidos++;
                 siguiente.EmpleadoId = empleadoIndex;
+                ClienteEnAtencion[empleadoIndex] = siguiente;
 
                 // Si al asignar este cliente vuelven a estar todos ocupados, iniciar periodo
                 if (TodosOcupados())

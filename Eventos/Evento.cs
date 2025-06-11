@@ -13,6 +13,7 @@ namespace TP4_Final.Eventos
         public double Rnd { get; set; }
         public double Tiempo { get; set; }
         public double Hora { get; set; }
+        private static readonly Random GlobalRandom = new Random();
         protected Distribucion Distribucion { get; }
 
         protected Evento(string nombre, Distribucion distribucion)
@@ -26,11 +27,20 @@ namespace TP4_Final.Eventos
         /// </summary>
         public void GenerarProxima(double reloj)
         {
-            Rnd = new Random().NextDouble();
+            
+            Rnd = GlobalRandom.NextDouble(); // Usar un generador de números aleatorios global para consistencia
             Tiempo = Distribucion.generarValor(Rnd);
             Hora = reloj + Tiempo;
         }
-    }
+
+		public void GenerarProxima(double reloj,int preparacion)
+		{
+
+			Rnd = GlobalRandom.NextDouble(); // Usar un generador de números aleatorios global para consistencia
+			Tiempo = Distribucion.generarValor(Rnd)+preparacion;
+			Hora = reloj + Tiempo;
+		}
+	}
 
     // Para T O D A S las llegadas:
     public class EventoLlegada : Evento

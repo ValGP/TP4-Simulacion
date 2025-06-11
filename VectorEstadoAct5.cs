@@ -10,7 +10,7 @@ using System.Reflection;
 
 namespace TP4_Final
 {
-    public class VectorEstado
+    public class VectorEstadoAct5
     {
         // Tiempo y Evento
         public string Evento { get; set; }
@@ -29,14 +29,12 @@ namespace TP4_Final
         public List<EventoFin> FinesOnline { get; set; }
         public List<EventoFin> FinesDelivery { get; set; }
         public List<EventoFin> FinesLlevar { get; set; }
-        public List<EventoFin> FinesEncuesta { get; set; }
 
-        private readonly int cantidadEmpleadosMostrador = 5;
+        private readonly int cantidadEmpleadosMostrador = 3;
         private readonly int cantidadEmpleadosAutoservicio = 3;
         private readonly int cantidadEmpleadosOnline = 3;
         private readonly int cantidadEmpleadosDelivery = 3;
         private readonly int cantidadEmpleadosLlevar = 2;
-        private readonly int cantidadEmpleadosEncuesta = 1;
 
         //Servicios
         //Cada servicio tiene su cola y su lista de empleados
@@ -45,7 +43,6 @@ namespace TP4_Final
         public Servicio Online { get; set; }
         public Servicio Delivery { get; set; }
         public Servicio Llevar { get; set; }
-        public Servicio Encuesta { get; set; }
 
 
         // Lista Clientes
@@ -55,7 +52,7 @@ namespace TP4_Final
         /// Constructor inicial: arma todo en tiempo 0
         /// </summary>
 
-        public VectorEstado(Dictionary<int, Distribucion> distribuciones)
+        public VectorEstadoAct5(Dictionary<int, Distribucion> distribuciones)
         {
             Evento = "Inicializacion";
             Reloj = 0;
@@ -79,8 +76,7 @@ namespace TP4_Final
             FinesOnline = new List<EventoFin>();
             FinesDelivery = new List<EventoFin>();
             FinesLlevar = new List<EventoFin>();
-            FinesEncuesta = new List<EventoFin>();
-
+         
             for (int i = 0; i < cantidadEmpleadosMostrador; i++)
             {
                 var fin = new EventoFin("Fin Mostrador", distribuciones[6], i)
@@ -126,15 +122,6 @@ namespace TP4_Final
                 FinesLlevar.Add(fin);
             }
 
-            for (int i = 0; i < cantidadEmpleadosEncuesta; i++)
-            {
-                var fin = new EventoFin("Fin Encuesta", distribuciones[11], i)
-                {
-                    Hora = double.PositiveInfinity
-                };
-                FinesEncuesta.Add(fin);
-            }
-
             // Inicializacion Servicios
 
             Mostrador = new Servicio("Mostrador", cantidadEmpleadosMostrador);
@@ -142,7 +129,6 @@ namespace TP4_Final
             Online = new Servicio("Online", cantidadEmpleadosOnline);
             Delivery = new Servicio("Delivery", cantidadEmpleadosDelivery);
             Llevar = new Servicio("Llevar", cantidadEmpleadosLlevar);
-            Encuesta = new Servicio("Encuesta", cantidadEmpleadosEncuesta);
 
             // Lista de Clientes
             ListaClientes = new List<Cliente>();
@@ -154,7 +140,7 @@ namespace TP4_Final
         /// </summary>
         /// 
 
-        public VectorEstado(VectorEstado ve, Dictionary<int, Distribucion> distribuciones, bool keep = false)
+        public VectorEstadoAct5(VectorEstadoAct5 ve, Dictionary<int, Distribucion> distribuciones, bool keep = false)
         {
             Evento = ve.Evento;
             Reloj = ve.Reloj;
@@ -223,13 +209,6 @@ namespace TP4_Final
                 Hora = f.Hora
             }).ToList();
 
-            FinesEncuesta = ve.FinesEncuesta.Select(f => new EventoFin(f.Nombre, distribuciones[11], f.EmpleadoId)
-            {
-                Rnd = keep ? f.Rnd : 0,
-                Tiempo = keep ? f.Tiempo : 0,
-                Hora = f.Hora
-            }).ToList();
-
             // Copia Empleados
 
             Mostrador = CopiaServicio(ve.Mostrador);
@@ -237,7 +216,6 @@ namespace TP4_Final
             Online = CopiaServicio(ve.Online);
             Delivery = CopiaServicio(ve.Delivery);
             Llevar = CopiaServicio(ve.Llevar);
-            Encuesta = CopiaServicio(ve.Encuesta);
 
             // Copia Lista de Clientes
             ListaClientes = ve.ListaClientes
@@ -349,14 +327,6 @@ namespace TP4_Final
                     eventoMin = fin;
                 }
             }
-            foreach (var fin in FinesEncuesta)
-            {
-                if (fin.Hora > Reloj && fin.Hora < horaMin)
-                {
-                    horaMin = fin.Hora;
-                    eventoMin = fin;
-                }
-            }
 
             return (eventoMin, horaMin);
         }
@@ -367,7 +337,7 @@ namespace TP4_Final
         /// Metodo TolIsta()
         /// 
 
-        public string[] ToLista(int maxClientesEnPantalla, bool encuestaActiva)
+        public string[] ToLista(int maxClientesEnPantalla)
         {
             var salida = new List<string>();
 
@@ -414,13 +384,6 @@ namespace TP4_Final
                 salida.Add(fin.Tiempo.ToString("F4"));
                 salida.Add(fin.Hora.ToString("F4"));
             }
-            if (encuestaActiva)
-                foreach (var fin in FinesEncuesta)
-                {
-                    salida.Add(fin.Rnd.ToString("F4"));
-                    salida.Add(fin.Tiempo.ToString("F4"));
-                    salida.Add(fin.Hora.ToString("F4"));
-                }
 
             // 4) Estados de empleados, hora inicio y tiempo ocupado, y colas generales
             //    * Mostrador *
@@ -468,17 +431,6 @@ namespace TP4_Final
             }
             salida.Add(Llevar.Cola.Count.ToString());
 
-            if (encuestaActiva)
-            {
-                foreach (var emp in Encuesta.Empleados)
-                {
-                    salida.Add(emp.Estado.ToString());
-                    salida.Add(emp.HoraInicioOcupacion.ToString("F4"));
-                    salida.Add(emp.TiempoOcupado.ToString("F4"));
-                }
-                salida.Add(Encuesta.Cola.Count.ToString());
-            }
-
             // 5) Tiempo total de espera por servicio
             double esperaMostrador = ListaClientes
                 .Where(c => c.Tipo == TipoCliente.Mostrador && c.HoraFinEspera >= c.HoraInicioEspera)
@@ -505,14 +457,6 @@ namespace TP4_Final
                 .Sum(c => c.TiempoEnCola);
             salida.Add(esperaLlevar.ToString("F4"));
 
-            if (encuestaActiva)
-            {
-                double esperaEncuesta = ListaClientes
-                    .Where(c => c.Tipo == TipoCliente.Encuesta && c.HoraFinEspera >= c.HoraInicioEspera)
-                    .Sum(c => c.TiempoEnCola);
-                salida.Add(esperaEncuesta.ToString("F4"));
-            }
-
             // 5) Métricas de servicio (ya las tienes en cada Servicio)
 
             salida.Add(Mostrador.TiempoAcumuladoOcupacionCompleta.ToString("F4"));
@@ -520,19 +464,15 @@ namespace TP4_Final
             salida.Add(Online.TiempoAcumuladoOcupacionCompleta.ToString("F4"));
             salida.Add(Delivery.TiempoAcumuladoOcupacionCompleta.ToString("F4"));
             salida.Add(Llevar.TiempoAcumuladoOcupacionCompleta.ToString("F4"));
-            if (encuestaActiva)
-                salida.Add(Encuesta.TiempoAcumuladoOcupacionCompleta.ToString("F4"));
 
-
+            
             salida.Add(Mostrador.TotalClientesAtendidos.ToString());
             salida.Add(Autoservicio.TotalClientesAtendidos.ToString());
             salida.Add(Online.TotalClientesAtendidos.ToString());
             salida.Add(Delivery.TotalClientesAtendidos.ToString());
             salida.Add(Llevar.TotalClientesAtendidos.ToString());
-            if (encuestaActiva)
-                salida.Add(Encuesta.TotalClientesAtendidos.ToString());
 
-
+            
 
 
             // 6) Total general
@@ -540,8 +480,7 @@ namespace TP4_Final
                       + Autoservicio.TotalClientesAtendidos
                       + Online.TotalClientesAtendidos
                       + Delivery.TotalClientesAtendidos
-                      + Llevar.TotalClientesAtendidos
-                      +(encuestaActiva ? Encuesta.TotalClientesAtendidos : 0);
+                      + Llevar.TotalClientesAtendidos;
             salida.Add(total.ToString());
 
             // 7) Estado de clientes hasta límite

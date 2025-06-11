@@ -56,12 +56,36 @@
             this.txtMostrarHasta = new System.Windows.Forms.TextBox();
             this.txtCantIteraciones = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.sinListaClientes = new System.Windows.Forms.RadioButton();
+            this.conListaClientes = new System.Windows.Forms.RadioButton();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnSimular = new System.Windows.Forms.Button();
+            this.txtEsperaMostrador = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtEsperaAutoservicio = new System.Windows.Forms.TextBox();
+            this.txtEsperaOnline = new System.Windows.Forms.TextBox();
+            this.txtEsperaDelivery = new System.Windows.Forms.TextBox();
+            this.txtEsperaLlevar = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtOcupacionLlevar = new System.Windows.Forms.TextBox();
+            this.txtOcupacionDelivery = new System.Windows.Forms.TextBox();
+            this.txtOcupacionOnline = new System.Windows.Forms.TextBox();
+            this.txtOcupacionAutoservicio = new System.Windows.Forms.TextBox();
+            this.txtOcupacionMostrador = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.minimoTiempoEspera = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnSimularAct5 = new System.Windows.Forms.Button();
+            this.btnSimularAct6 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioEncuesta = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.TablaVectorEstado)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // TablaVectorEstado
@@ -71,6 +95,7 @@
             this.TablaVectorEstado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TablaVectorEstado.Location = new System.Drawing.Point(2, 157);
             this.TablaVectorEstado.Name = "TablaVectorEstado";
+            this.TablaVectorEstado.RowHeadersWidth = 51;
             this.TablaVectorEstado.Size = new System.Drawing.Size(1491, 494);
             this.TablaVectorEstado.TabIndex = 0;
             // 
@@ -277,7 +302,7 @@
             this.txtMostrarDesde.Name = "txtMostrarDesde";
             this.txtMostrarDesde.Size = new System.Drawing.Size(120, 20);
             this.txtMostrarDesde.TabIndex = 24;
-            this.txtMostrarDesde.Text = "0";
+            this.txtMostrarDesde.Text = "400";
             // 
             // txtMostrarHasta
             // 
@@ -285,7 +310,7 @@
             this.txtMostrarHasta.Name = "txtMostrarHasta";
             this.txtMostrarHasta.Size = new System.Drawing.Size(120, 20);
             this.txtMostrarHasta.TabIndex = 25;
-            this.txtMostrarHasta.Text = "100";
+            this.txtMostrarHasta.Text = "500";
             // 
             // txtCantIteraciones
             // 
@@ -293,22 +318,46 @@
             this.txtCantIteraciones.Name = "txtCantIteraciones";
             this.txtCantIteraciones.Size = new System.Drawing.Size(120, 20);
             this.txtCantIteraciones.TabIndex = 26;
-            this.txtCantIteraciones.Text = "100";
+            this.txtCantIteraciones.Text = "500";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.sinListaClientes);
+            this.groupBox1.Controls.Add(this.conListaClientes);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.txtCantIteraciones);
             this.groupBox1.Controls.Add(this.txtMostrarDesde);
             this.groupBox1.Controls.Add(this.txtMostrarHasta);
-            this.groupBox1.Location = new System.Drawing.Point(490, 26);
+            this.groupBox1.Location = new System.Drawing.Point(656, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(255, 107);
+            this.groupBox1.Size = new System.Drawing.Size(255, 139);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Parametros de Simulacion";
+            // 
+            // sinListaClientes
+            // 
+            this.sinListaClientes.AutoSize = true;
+            this.sinListaClientes.Location = new System.Drawing.Point(10, 116);
+            this.sinListaClientes.Name = "sinListaClientes";
+            this.sinListaClientes.Size = new System.Drawing.Size(99, 17);
+            this.sinListaClientes.TabIndex = 46;
+            this.sinListaClientes.TabStop = true;
+            this.sinListaClientes.Text = "SinListaClientes";
+            this.sinListaClientes.UseVisualStyleBackColor = true;
+            // 
+            // conListaClientes
+            // 
+            this.conListaClientes.AutoSize = true;
+            this.conListaClientes.Location = new System.Drawing.Point(118, 116);
+            this.conListaClientes.Name = "conListaClientes";
+            this.conListaClientes.Size = new System.Drawing.Size(103, 17);
+            this.conListaClientes.TabIndex = 47;
+            this.conListaClientes.TabStop = true;
+            this.conListaClientes.Text = "ConListaClientes";
+            this.conListaClientes.UseVisualStyleBackColor = true;
             // 
             // label15
             // 
@@ -339,19 +388,215 @@
             // 
             // btnSimular
             // 
-            this.btnSimular.Location = new System.Drawing.Point(1324, 111);
+            this.btnSimular.Location = new System.Drawing.Point(1334, 9);
             this.btnSimular.Name = "btnSimular";
-            this.btnSimular.Size = new System.Drawing.Size(159, 40);
+            this.btnSimular.Size = new System.Drawing.Size(159, 144);
             this.btnSimular.TabIndex = 28;
             this.btnSimular.Text = "SIMULAR";
             this.btnSimular.UseVisualStyleBackColor = true;
             this.btnSimular.Click += new System.EventHandler(this.btnSimular_Click);
+            // 
+            // txtEsperaMostrador
+            // 
+            this.txtEsperaMostrador.Location = new System.Drawing.Point(370, 26);
+            this.txtEsperaMostrador.Name = "txtEsperaMostrador";
+            this.txtEsperaMostrador.Size = new System.Drawing.Size(111, 20);
+            this.txtEsperaMostrador.TabIndex = 29;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(384, 10);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(84, 13);
+            this.label17.TabIndex = 30;
+            this.label17.Text = "EsperaPromedio";
+            // 
+            // txtEsperaAutoservicio
+            // 
+            this.txtEsperaAutoservicio.Location = new System.Drawing.Point(370, 51);
+            this.txtEsperaAutoservicio.Name = "txtEsperaAutoservicio";
+            this.txtEsperaAutoservicio.Size = new System.Drawing.Size(111, 20);
+            this.txtEsperaAutoservicio.TabIndex = 31;
+            // 
+            // txtEsperaOnline
+            // 
+            this.txtEsperaOnline.Location = new System.Drawing.Point(370, 77);
+            this.txtEsperaOnline.Name = "txtEsperaOnline";
+            this.txtEsperaOnline.Size = new System.Drawing.Size(111, 20);
+            this.txtEsperaOnline.TabIndex = 32;
+            // 
+            // txtEsperaDelivery
+            // 
+            this.txtEsperaDelivery.Location = new System.Drawing.Point(370, 103);
+            this.txtEsperaDelivery.Name = "txtEsperaDelivery";
+            this.txtEsperaDelivery.Size = new System.Drawing.Size(111, 20);
+            this.txtEsperaDelivery.TabIndex = 33;
+            // 
+            // txtEsperaLlevar
+            // 
+            this.txtEsperaLlevar.Location = new System.Drawing.Point(370, 131);
+            this.txtEsperaLlevar.Name = "txtEsperaLlevar";
+            this.txtEsperaLlevar.Size = new System.Drawing.Size(111, 20);
+            this.txtEsperaLlevar.TabIndex = 34;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(519, 10);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(110, 13);
+            this.label18.TabIndex = 35;
+            this.label18.Text = "PorcentajeOcupacion";
+            // 
+            // txtOcupacionLlevar
+            // 
+            this.txtOcupacionLlevar.Location = new System.Drawing.Point(518, 131);
+            this.txtOcupacionLlevar.Name = "txtOcupacionLlevar";
+            this.txtOcupacionLlevar.Size = new System.Drawing.Size(111, 20);
+            this.txtOcupacionLlevar.TabIndex = 40;
+            // 
+            // txtOcupacionDelivery
+            // 
+            this.txtOcupacionDelivery.Location = new System.Drawing.Point(518, 103);
+            this.txtOcupacionDelivery.Name = "txtOcupacionDelivery";
+            this.txtOcupacionDelivery.Size = new System.Drawing.Size(111, 20);
+            this.txtOcupacionDelivery.TabIndex = 39;
+            // 
+            // txtOcupacionOnline
+            // 
+            this.txtOcupacionOnline.Location = new System.Drawing.Point(518, 77);
+            this.txtOcupacionOnline.Name = "txtOcupacionOnline";
+            this.txtOcupacionOnline.Size = new System.Drawing.Size(111, 20);
+            this.txtOcupacionOnline.TabIndex = 38;
+            // 
+            // txtOcupacionAutoservicio
+            // 
+            this.txtOcupacionAutoservicio.Location = new System.Drawing.Point(518, 51);
+            this.txtOcupacionAutoservicio.Name = "txtOcupacionAutoservicio";
+            this.txtOcupacionAutoservicio.Size = new System.Drawing.Size(111, 20);
+            this.txtOcupacionAutoservicio.TabIndex = 37;
+            // 
+            // txtOcupacionMostrador
+            // 
+            this.txtOcupacionMostrador.Location = new System.Drawing.Point(518, 26);
+            this.txtOcupacionMostrador.Name = "txtOcupacionMostrador";
+            this.txtOcupacionMostrador.Size = new System.Drawing.Size(111, 20);
+            this.txtOcupacionMostrador.TabIndex = 36;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(938, 11);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(126, 13);
+            this.label19.TabIndex = 41;
+            this.label19.Text = "2. Minimo Tiempo Espera";
+            // 
+            // minimoTiempoEspera
+            // 
+            this.minimoTiempoEspera.Location = new System.Drawing.Point(940, 28);
+            this.minimoTiempoEspera.Name = "minimoTiempoEspera";
+            this.minimoTiempoEspera.Size = new System.Drawing.Size(123, 20);
+            this.minimoTiempoEspera.TabIndex = 42;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(940, 54);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(182, 19);
+            this.button1.TabIndex = 44;
+            this.button1.Text = "3. TasaClientes Autoservicio = 1.2";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(940, 76);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(182, 19);
+            this.button2.TabIndex = 45;
+            this.button2.Text = "3. Default";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnSimularAct5
+            // 
+            this.btnSimularAct5.Location = new System.Drawing.Point(1146, 12);
+            this.btnSimularAct5.Name = "btnSimularAct5";
+            this.btnSimularAct5.Size = new System.Drawing.Size(182, 19);
+            this.btnSimularAct5.TabIndex = 46;
+            this.btnSimularAct5.Text = "5. Empleados de Mostrador = 3";
+            this.btnSimularAct5.UseVisualStyleBackColor = true;
+            this.btnSimularAct5.Click += new System.EventHandler(this.btnSimularAct5_Click);
+            // 
+            // btnSimularAct6
+            // 
+            this.btnSimularAct6.Location = new System.Drawing.Point(1146, 57);
+            this.btnSimularAct6.Name = "btnSimularAct6";
+            this.btnSimularAct6.Size = new System.Drawing.Size(182, 19);
+            this.btnSimularAct6.TabIndex = 47;
+            this.btnSimularAct6.Text = "6. +1 min preparación Para Llevar";
+            this.btnSimularAct6.UseVisualStyleBackColor = true;
+            this.btnSimularAct6.Click += new System.EventHandler(this.btnSimularAct6_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Controls.Add(this.radioEncuesta);
+            this.groupBox2.Location = new System.Drawing.Point(1143, 102);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(185, 44);
+            this.groupBox2.TabIndex = 48;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "7. Nuevo Servicio Encuesta";
+            // 
+            // radioEncuesta
+            // 
+            this.radioEncuesta.AutoSize = true;
+            this.radioEncuesta.Location = new System.Drawing.Point(6, 18);
+            this.radioEncuesta.Name = "radioEncuesta";
+            this.radioEncuesta.Size = new System.Drawing.Size(88, 17);
+            this.radioEncuesta.TabIndex = 0;
+            this.radioEncuesta.TabStop = true;
+            this.radioEncuesta.Text = "conEncuesta";
+            this.radioEncuesta.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(96, 18);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(83, 17);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "sinEncuesta";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // Simulacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1495, 653);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.btnSimularAct6);
+            this.Controls.Add(this.btnSimularAct5);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.minimoTiempoEspera);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.txtOcupacionLlevar);
+            this.Controls.Add(this.txtOcupacionDelivery);
+            this.Controls.Add(this.txtOcupacionOnline);
+            this.Controls.Add(this.txtOcupacionAutoservicio);
+            this.Controls.Add(this.txtOcupacionMostrador);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.txtEsperaLlevar);
+            this.Controls.Add(this.txtEsperaDelivery);
+            this.Controls.Add(this.txtEsperaOnline);
+            this.Controls.Add(this.txtEsperaAutoservicio);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.txtEsperaMostrador);
             this.Controls.Add(this.btnSimular);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tasaAtencionLlevar);
@@ -384,6 +629,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.TablaVectorEstado)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -423,6 +670,29 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btnSimular;
+        private System.Windows.Forms.TextBox txtEsperaMostrador;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtEsperaOnline;
+        private System.Windows.Forms.TextBox txtEsperaDelivery;
+        private System.Windows.Forms.TextBox txtEsperaLlevar;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtOcupacionLlevar;
+        private System.Windows.Forms.TextBox txtOcupacionDelivery;
+        private System.Windows.Forms.TextBox txtOcupacionOnline;
+        private System.Windows.Forms.TextBox txtOcupacionAutoservicio;
+        private System.Windows.Forms.TextBox txtOcupacionMostrador;
+        private System.Windows.Forms.TextBox txtEsperaAutoservicio;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox minimoTiempoEspera;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.RadioButton sinListaClientes;
+        private System.Windows.Forms.RadioButton conListaClientes;
+		private System.Windows.Forms.Button btnSimularAct5;
+		private System.Windows.Forms.Button btnSimularAct6;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton radioEncuesta;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
 

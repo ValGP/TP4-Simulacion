@@ -13,18 +13,17 @@ namespace TP4_Final
     /// Gestiona la ejecución de la simulación, registra los estados intermedios
     /// y permite acceder al historial de estados para visualización.
     /// </summary>
-    public class GestorSimulacion
+    public class GestorSimulacionAct5
     {
         private readonly Dictionary<int, Distribucion> _distribuciones;
         private readonly int _numIteraciones;
         private readonly int _mostrarDesde;
         private readonly int _mostrarHasta;
-        private readonly bool _habilitarEncuesta;
 
         /// <summary>
         /// Estados guardados para las iteraciones solicitadas.
         /// </summary>
-        public List<VectorEstado> Registros { get; } = new List<VectorEstado>();
+        public List<VectorEstadoAct5> Registros { get; } = new List<VectorEstadoAct5>();
 
         /// <summary>
         /// Constructor del gestor de simulación.
@@ -33,18 +32,16 @@ namespace TP4_Final
         /// <param name="mostrarDesde">Índice de iteración desde el cual almacenar estados.</param>
         /// <param name="mostrarHasta">Índice de iteración hasta el cual almacenar estados.</param>
         /// <param name="distribuciones">Mapeo de distribuciones para generación de eventos.</param>
-        public GestorSimulacion(
+        public GestorSimulacionAct5(
             int numIteraciones,
             int mostrarDesde,
             int mostrarHasta,
-            Dictionary<int, Distribucion> distribuciones,
-            bool habilitarEncuesta)
+            Dictionary<int, Distribucion> distribuciones)
         {
             _numIteraciones = numIteraciones;
             _mostrarDesde = mostrarDesde;
             _mostrarHasta = mostrarHasta;
             _distribuciones = distribuciones;
-            _habilitarEncuesta = habilitarEncuesta;
         }
 
         /// <summary>
@@ -53,10 +50,10 @@ namespace TP4_Final
         /// </summary>
         public void Ejecutar()
         {
-            var estado = new VectorEstado(_distribuciones);
+            var estado = new VectorEstadoAct5(_distribuciones);
 
             // 1) Inicializo el estado inicial
-            Registros.Add(new VectorEstado(estado, _distribuciones, keep: true));
+            Registros.Add(new VectorEstadoAct5(estado, _distribuciones, keep: true));
 
             for (int i = 0; i < _numIteraciones; i++)
             {
@@ -87,7 +84,7 @@ namespace TP4_Final
 
                 // 4) Ahora sí guardo (clono) el estado si está en el rango pedido
                 if (i >= _mostrarDesde && i <= _mostrarHasta)
-                    Registros.Add(new VectorEstado(estado, _distribuciones, keep: true));
+                    Registros.Add(new VectorEstadoAct5(estado, _distribuciones, keep: true));
             
             }
         }
@@ -188,7 +185,6 @@ namespace TP4_Final
                         finEvA2.GenerarProxima(ve.Reloj);
                         ve.ListaClientes.Add(siguienteA);
                     }
-                    GenerarEncuestaSiCorresponde(ve);
                     break;
 
                 case EventoFin fin when fin.Nombre.Contains("Online"):
@@ -209,17 +205,6 @@ namespace TP4_Final
                         finEvD2.GenerarProxima(ve.Reloj);
                         ve.ListaClientes.Add(siguienteD);
                     }
-                    GenerarEncuestaSiCorresponde(ve);
-                    break;
-
-                case EventoFin fin when fin.Nombre.Contains("Encuesta"):
-                    var siguienteE = ve.Encuesta.LiberarEmpleado(fin.EmpleadoId, ve.Reloj);
-                    if (siguienteE != null)
-                    {
-                        var finEvE2 = ve.FinesEncuesta[fin.EmpleadoId];
-                        finEvE2.GenerarProxima(ve.Reloj);
-                        ve.ListaClientes.Add(siguienteE);
-                    }
                     break;
 
                 case EventoFin fin when fin.Nombre.Contains("Llevar"):
@@ -238,21 +223,130 @@ namespace TP4_Final
             }
         }
 
-        private void GenerarEncuestaSiCorresponde(VectorEstado ve)
-        {
-            if (!_habilitarEncuesta) return;
-            if (new Random().NextDouble() <= 0.15)
-            {
-                var clienteE = new Cliente(EstadoCliente.Esperando, TipoCliente.Encuesta, ve.Reloj);
-                bool inicioE = ve.Encuesta.AtenderCliente(clienteE, ve.Reloj);
-                ve.ListaClientes.Add(clienteE);
-                if (inicioE)
-                {
-                    var finEv = ve.FinesEncuesta[clienteE.EmpleadoId];
-                    finEv.GenerarProxima(ve.Reloj);
-                }
-            }
-        }
+		private void ProcesarEvento(VectorEstadoAct5 ve, Evento ev)
+		{
+			switch (ev)
+			{
+				// ===== Llegadas =====
+				case EventoLlegada lleg when lleg.Nombre.Contains("Mostrador"):
+					var clienteM = new Cliente(EstadoCliente.Esperando, TipoCliente.Mostrador, ve.Reloj);
+					bool inicioM = ve.Mostrador.AtenderCliente(clienteM, ve.Reloj);
+					ve.ListaClientes.Add(clienteM);
 
-    }
+					if (inicioM)
+					{
+						// 🟢 Cambio: si entra directo a atención, programar su fin
+						var finEvM = ve.FinesMostrador[clienteM.EmpleadoId];
+						finEvM.GenerarProxima(ve.Reloj);
+					}
+					break;
+
+				case EventoLlegada lleg when lleg.Nombre.Contains("Autoservicio"):
+					var clienteA = new Cliente(EstadoCliente.Esperando, TipoCliente.Autoservicio, ve.Reloj);
+					bool inicioA = ve.Autoservicio.AtenderCliente(clienteA, ve.Reloj);
+					ve.ListaClientes.Add(clienteA);
+
+					if (inicioA)
+					{
+						var finEvA = ve.FinesAutoservicio[clienteA.EmpleadoId];
+						finEvA.GenerarProxima(ve.Reloj);
+					}
+					break;
+
+				case EventoLlegada lleg when lleg.Nombre.Contains("Online"):
+					var clienteO = new Cliente(EstadoCliente.Esperando, TipoCliente.Online, ve.Reloj);
+					bool inicioO = ve.Online.AtenderCliente(clienteO, ve.Reloj);
+					ve.ListaClientes.Add(clienteO);
+
+					if (inicioO)
+					{
+						var finEvO = ve.FinesOnline[clienteO.EmpleadoId];
+						finEvO.GenerarProxima(ve.Reloj);
+					}
+					break;
+
+				case EventoLlegada lleg when lleg.Nombre.Contains("Delivery"):
+					var clienteD = new Cliente(EstadoCliente.Esperando, TipoCliente.Delivery, ve.Reloj);
+					bool inicioD = ve.Delivery.AtenderCliente(clienteD, ve.Reloj);
+					ve.ListaClientes.Add(clienteD);
+
+					if (inicioD)
+					{
+						var finEvD = ve.FinesDelivery[clienteD.EmpleadoId];
+						finEvD.GenerarProxima(ve.Reloj);
+					}
+					break;
+
+				case EventoLlegada lleg when lleg.Nombre.Contains("Llevar"):
+					var clienteL = new Cliente(EstadoCliente.Esperando, TipoCliente.Llevar, ve.Reloj);
+					bool inicioL = ve.Llevar.AtenderCliente(clienteL, ve.Reloj);
+					ve.ListaClientes.Add(clienteL);
+
+					if (inicioL)
+					{
+						var finEvL = ve.FinesLlevar[clienteL.EmpleadoId];
+						finEvL.GenerarProxima(ve.Reloj);
+					}
+					break;
+
+
+				// ===== Fines de atención =====
+				case EventoFin fin when fin.Nombre.Contains("Mostrador"):
+					var siguienteM = ve.Mostrador.LiberarEmpleado(fin.EmpleadoId, ve.Reloj);
+					if (siguienteM != null)
+					{
+						// 🆕 Vuelve a programar fin para este mismo empleado
+						var finEvM2 = ve.FinesMostrador[fin.EmpleadoId];
+						finEvM2.GenerarProxima(ve.Reloj);
+						ve.ListaClientes.Add(siguienteM);
+					}
+					break;
+
+				case EventoFin fin when fin.Nombre.Contains("Autoservicio"):
+					var siguienteA = ve.Autoservicio.LiberarEmpleado(fin.EmpleadoId, ve.Reloj);
+					if (siguienteA != null)
+					{
+						var finEvA2 = ve.FinesAutoservicio[fin.EmpleadoId];
+						finEvA2.GenerarProxima(ve.Reloj);
+						ve.ListaClientes.Add(siguienteA);
+					}
+					break;
+
+				case EventoFin fin when fin.Nombre.Contains("Online"):
+					var siguienteO = ve.Online.LiberarEmpleado(fin.EmpleadoId, ve.Reloj);
+					if (siguienteO != null)
+					{
+						var finEvO2 = ve.FinesOnline[fin.EmpleadoId];
+						finEvO2.GenerarProxima(ve.Reloj);
+						ve.ListaClientes.Add(siguienteO);
+					}
+					break;
+
+				case EventoFin fin when fin.Nombre.Contains("Delivery"):
+					var siguienteD = ve.Delivery.LiberarEmpleado(fin.EmpleadoId, ve.Reloj);
+					if (siguienteD != null)
+					{
+						var finEvD2 = ve.FinesDelivery[fin.EmpleadoId];
+						finEvD2.GenerarProxima(ve.Reloj);
+						ve.ListaClientes.Add(siguienteD);
+					}
+					break;
+
+				case EventoFin fin when fin.Nombre.Contains("Llevar"):
+					var siguienteL = ve.Llevar.LiberarEmpleado(fin.EmpleadoId, ve.Reloj);
+					if (siguienteL != null)
+					{
+						var finEvL2 = ve.FinesLlevar[fin.EmpleadoId];
+						finEvL2.GenerarProxima(ve.Reloj);
+						ve.ListaClientes.Add(siguienteL);
+					}
+					break;
+
+				default:
+					// Evento no contemplado
+					break;
+			}
+		}
+
+	}
 }
