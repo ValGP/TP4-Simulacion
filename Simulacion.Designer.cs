@@ -81,12 +81,12 @@
             this.btnSimularAct5 = new System.Windows.Forms.Button();
             this.btnSimularAct6 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioEncuesta = new System.Windows.Forms.RadioButton();
-            this.txtEsperaEncuesta = new System.Windows.Forms.TextBox();
-            this.txtOcupacionEncuesta = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtOcupacionEncuesta = new System.Windows.Forms.TextBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.txtEsperaEncuesta = new System.Windows.Forms.TextBox();
+            this.radioEncuesta = new System.Windows.Forms.RadioButton();
             this.chkLimitarCola = new System.Windows.Forms.CheckBox();
             this.label22 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TablaVectorEstado)).BeginInit();
@@ -102,7 +102,7 @@
             this.TablaVectorEstado.Location = new System.Drawing.Point(2, 157);
             this.TablaVectorEstado.Name = "TablaVectorEstado";
             this.TablaVectorEstado.RowHeadersWidth = 51;
-            this.TablaVectorEstado.Size = new System.Drawing.Size(1491, 494);
+            this.TablaVectorEstado.Size = new System.Drawing.Size(1498, 494);
             this.TablaVectorEstado.TabIndex = 0;
             // 
             // tasaLlegadaMostrador
@@ -308,7 +308,7 @@
             this.txtMostrarDesde.Name = "txtMostrarDesde";
             this.txtMostrarDesde.Size = new System.Drawing.Size(120, 20);
             this.txtMostrarDesde.TabIndex = 24;
-            this.txtMostrarDesde.Text = "400";
+            this.txtMostrarDesde.Text = "900";
             // 
             // txtMostrarHasta
             // 
@@ -316,7 +316,7 @@
             this.txtMostrarHasta.Name = "txtMostrarHasta";
             this.txtMostrarHasta.Size = new System.Drawing.Size(120, 20);
             this.txtMostrarHasta.TabIndex = 25;
-            this.txtMostrarHasta.Text = "500";
+            this.txtMostrarHasta.Text = "1000";
             // 
             // txtCantIteraciones
             // 
@@ -324,7 +324,7 @@
             this.txtCantIteraciones.Name = "txtCantIteraciones";
             this.txtCantIteraciones.Size = new System.Drawing.Size(120, 20);
             this.txtCantIteraciones.TabIndex = 26;
-            this.txtCantIteraciones.Text = "500";
+            this.txtCantIteraciones.Text = "1000";
             // 
             // groupBox1
             // 
@@ -561,41 +561,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "7. Nuevo Servicio Encuesta";
             // 
-            // radioButton1
+            // label21
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(96, 18);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(83, 17);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "sinEncuesta";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioEncuesta
-            // 
-            this.radioEncuesta.AutoSize = true;
-            this.radioEncuesta.Location = new System.Drawing.Point(6, 18);
-            this.radioEncuesta.Name = "radioEncuesta";
-            this.radioEncuesta.Size = new System.Drawing.Size(88, 17);
-            this.radioEncuesta.TabIndex = 0;
-            this.radioEncuesta.TabStop = true;
-            this.radioEncuesta.Text = "conEncuesta";
-            this.radioEncuesta.UseVisualStyleBackColor = true;
-            // 
-            // txtEsperaEncuesta
-            // 
-            this.txtEsperaEncuesta.Location = new System.Drawing.Point(82, 40);
-            this.txtEsperaEncuesta.Name = "txtEsperaEncuesta";
-            this.txtEsperaEncuesta.Size = new System.Drawing.Size(97, 20);
-            this.txtEsperaEncuesta.TabIndex = 49;
-            // 
-            // txtOcupacionEncuesta
-            // 
-            this.txtOcupacionEncuesta.Location = new System.Drawing.Point(82, 65);
-            this.txtOcupacionEncuesta.Name = "txtOcupacionEncuesta";
-            this.txtOcupacionEncuesta.Size = new System.Drawing.Size(97, 20);
-            this.txtOcupacionEncuesta.TabIndex = 50;
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(12, 71);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(59, 13);
+            this.label21.TabIndex = 52;
+            this.label21.Text = "Ocupacion";
             // 
             // label20
             // 
@@ -607,14 +580,41 @@
             this.label20.Text = "EsperaProm";
             this.label20.Click += new System.EventHandler(this.label20_Click);
             // 
-            // label21
+            // txtOcupacionEncuesta
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(12, 71);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(59, 13);
-            this.label21.TabIndex = 52;
-            this.label21.Text = "Ocupacion";
+            this.txtOcupacionEncuesta.Location = new System.Drawing.Point(82, 65);
+            this.txtOcupacionEncuesta.Name = "txtOcupacionEncuesta";
+            this.txtOcupacionEncuesta.Size = new System.Drawing.Size(97, 20);
+            this.txtOcupacionEncuesta.TabIndex = 50;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(96, 18);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(83, 17);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "sinEncuesta";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // txtEsperaEncuesta
+            // 
+            this.txtEsperaEncuesta.Location = new System.Drawing.Point(82, 40);
+            this.txtEsperaEncuesta.Name = "txtEsperaEncuesta";
+            this.txtEsperaEncuesta.Size = new System.Drawing.Size(97, 20);
+            this.txtEsperaEncuesta.TabIndex = 49;
+            // 
+            // radioEncuesta
+            // 
+            this.radioEncuesta.AutoSize = true;
+            this.radioEncuesta.Location = new System.Drawing.Point(6, 18);
+            this.radioEncuesta.Name = "radioEncuesta";
+            this.radioEncuesta.Size = new System.Drawing.Size(88, 17);
+            this.radioEncuesta.TabIndex = 0;
+            this.radioEncuesta.TabStop = true;
+            this.radioEncuesta.Text = "conEncuesta";
+            this.radioEncuesta.UseVisualStyleBackColor = true;
             // 
             // chkLimitarCola
             // 
@@ -640,7 +640,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1495, 653);
+            this.ClientSize = new System.Drawing.Size(1502, 653);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.chkLimitarCola);
             this.Controls.Add(this.groupBox2);

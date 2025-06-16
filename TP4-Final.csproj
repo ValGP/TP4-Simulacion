@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VectorEstadoAct6.cs" />
     <Compile Include="VectorEstadoAct5.cs" />
     <Compile Include="VectorEstado.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

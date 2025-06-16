@@ -23,7 +23,7 @@ namespace TP4_Final
         /// <summary>
         /// Estados guardados para las iteraciones solicitadas.
         /// </summary>
-        public List<VectorEstado> Registros { get; } = new List<VectorEstado>();
+        public List<VectorEstadoAct6> Registros { get; } = new List<VectorEstadoAct6>();
 
         /// <summary>
         /// Constructor del gestor de simulación.
@@ -50,10 +50,10 @@ namespace TP4_Final
         /// </summary>
         public void Ejecutar()
         {
-            var estado = new VectorEstado(_distribuciones);
+            var estado = new VectorEstadoAct6(_distribuciones);
 
             // 1) Inicializo el estado inicial
-            Registros.Add(new VectorEstado(estado, _distribuciones, keep: true));
+            Registros.Add(new VectorEstadoAct6(estado, _distribuciones, keep: true));
 
             for (int i = 0; i < _numIteraciones; i++)
             {
@@ -65,8 +65,16 @@ namespace TP4_Final
                 estado.Reloj = hora;
                 ProcesarEvento(estado, proximo);
 
-                // 3) Programo la próxima vez que ocurra este mismo evento
-                proximo.GenerarProxima(estado.Reloj);
+				// 3) Programo la próxima vez que ocurra este mismo evento
+				if (proximo.Nombre.Contains("Llevar"))
+				{
+					proximo.GenerarProxima(estado.Reloj,1);
+				}
+                else
+                {
+					proximo.GenerarProxima(estado.Reloj);
+				}
+				
 
                 //if (proximo is EventoLlegada)
                 //{
@@ -84,7 +92,7 @@ namespace TP4_Final
 
                 // 4) Ahora sí guardo (clono) el estado si está en el rango pedido
                 if (i >= _mostrarDesde && i <= _mostrarHasta)
-                    Registros.Add(new VectorEstado(estado, _distribuciones, keep: true));
+                    Registros.Add(new VectorEstadoAct6(estado, _distribuciones, keep: true));
             
             }
         }
@@ -98,7 +106,7 @@ namespace TP4_Final
         /// Aplica la lógica de negocio correspondiente al evento actual,
         /// ya sea una llegada o un fin de atención en un servicio.
         /// </summary>
-        private void ProcesarEvento(VectorEstado ve, Evento ev)
+        private void ProcesarEvento(VectorEstadoAct6 ve, Evento ev)
         {
             switch (ev)
             {

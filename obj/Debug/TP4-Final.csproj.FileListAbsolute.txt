@@ -28,3 +28,23 @@ C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\RAR\TP4-Final\TP4-Final\obj\Deb
 C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\RAR\TP4-Final\TP4-Final\bin\Debug\TP4-Final.exe.config
 C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\RAR\TP4-Final\TP4-Final\bin\Debug\TP4-Final.exe
 C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\RAR\TP4-Final\TP4-Final\bin\Debug\TP4-Final.pdb
+C:\Notebook\Documentos\UTN\Ing En Sistemas\2025\SIM\TPs\TP4-Final\bin\Debug\TP4-Final.exe.config
+C:\Notebook\Documentos\UTN\Ing En Sistemas\2025\SIM\TPs\TP4-Final\bin\Debug\TP4-Final.exe
+C:\Notebook\Documentos\UTN\Ing En Sistemas\2025\SIM\TPs\TP4-Final\bin\Debug\TP4-Final.pdb
+C:\Notebook\Documentos\UTN\Ing En Sistemas\2025\SIM\TPs\TP4-Final\obj\Debug\TP4-Final.csproj.AssemblyReference.cache
+C:\Notebook\Documentos\UTN\Ing En Sistemas\2025\SIM\TPs\TP4-Final\obj\Debug\TP4_Final.Properties.Resources.resources
+C:\Notebook\Documentos\UTN\Ing En Sistemas\2025\SIM\TPs\TP4-Final\obj\Debug\TP4_Final.Simulacion.resources
+C:\Notebook\Documentos\UTN\Ing En Sistemas\2025\SIM\TPs\TP4-Final\obj\Debug\TP4-Final.csproj.GenerateResource.cache
+C:\Notebook\Documentos\UTN\Ing En Sistemas\2025\SIM\TPs\TP4-Final\obj\Debug\TP4-Final.csproj.CoreCompileInputs.cache
+C:\Notebook\Documentos\UTN\Ing En Sistemas\2025\SIM\TPs\TP4-Final\obj\Debug\TP4-Final.exe
+C:\Notebook\Documentos\UTN\Ing En Sistemas\2025\SIM\TPs\TP4-Final\obj\Debug\TP4-Final.pdb
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\Ultima Version Hernan\TP4-Final\bin\Debug\TP4-Final.exe.config
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\Ultima Version Hernan\TP4-Final\bin\Debug\TP4-Final.exe
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\Ultima Version Hernan\TP4-Final\bin\Debug\TP4-Final.pdb
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\Ultima Version Hernan\TP4-Final\obj\Debug\TP4-Final.csproj.AssemblyReference.cache
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\Ultima Version Hernan\TP4-Final\obj\Debug\TP4_Final.Properties.Resources.resources
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\Ultima Version Hernan\TP4-Final\obj\Debug\TP4_Final.Simulacion.resources
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\Ultima Version Hernan\TP4-Final\obj\Debug\TP4-Final.csproj.GenerateResource.cache
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\Ultima Version Hernan\TP4-Final\obj\Debug\TP4-Final.csproj.CoreCompileInputs.cache
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\Ultima Version Hernan\TP4-Final\obj\Debug\TP4-Final.exe
+C:\Users\vale-\OneDrive\Desktop\UTN 2025\SIM\TP4\Ultima Version Hernan\TP4-Final\obj\Debug\TP4-Final.pdb
