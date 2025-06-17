@@ -208,6 +208,7 @@ namespace TP4_Final
                     TablaVectorEstado.Columns.Add($"TiempoOcu_Encuesta_{i}", $"Tiempo Ocu En E{i}");
                 }
                 TablaVectorEstado.Columns.Add("ColaEncuesta", "Cola Encuesta");
+                TablaVectorEstado.Columns.Add("RND_DecisionEncuesta", "Rnd Dec Encuesta");
             }
 
             // 6) Columnas de tiempo total de espera en cola por servicio

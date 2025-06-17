@@ -245,10 +245,18 @@ namespace TP4_Final
 
         private void GenerarEncuestaSiCorresponde(VectorEstado ve)
         {
-            if (!_habilitarEncuesta) return;
-            if (_random.NextDouble() <= 0.15)
+            if (!_habilitarEncuesta)
             {
-                Console.WriteLine("Cliente Encuesta");
+                ve.RndDecisionEncuesta = 0.0;
+                return;
+            }
+
+            double rnd = _random.NextDouble();
+            ve.RndDecisionEncuesta = rnd;
+
+            if (rnd <= 0.15)
+            {
+                
                 var clienteE = new Cliente(EstadoCliente.Esperando, TipoCliente.Encuesta, ve.Reloj);
                 bool inicioE = ve.Encuesta.AtenderCliente(clienteE, ve.Reloj);
                 ve.ListaClientes.Add(clienteE);

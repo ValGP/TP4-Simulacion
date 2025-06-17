@@ -52,6 +52,7 @@ namespace TP4_Final
 
         // Lista Clientes
         public List<Cliente> ListaClientes { get; set; }
+        public double RndDecisionEncuesta { get; set; }
 
         /// <summary>
         /// Constructor inicial: arma todo en tiempo 0
@@ -150,7 +151,8 @@ namespace TP4_Final
 
             // Lista de Clientes
             ListaClientes = new List<Cliente>();
-            
+            RndDecisionEncuesta = 0.0;
+
         }
 
         /// <summary>
@@ -249,15 +251,19 @@ namespace TP4_Final
             .Select(c => new Cliente(c))
             .ToList();
 
+            RndDecisionEncuesta = ve.RndDecisionEncuesta;
+
 
         }
 
         private Servicio CopiaServicio(Servicio s)
         {
+            var totalOcupacion = s.Empleados.Sum(e => e.TiempoOcupado);
+
             var c = new Servicio(s.Nombre, s.Empleados.Count, s.CapacidadCola)
             {
                 TotalClientesAtendidos = s.TotalClientesAtendidos,
-                TiempoAcumuladoOcupacionCompleta = s.TiempoAcumuladoOcupacionCompleta,
+                TiempoAcumuladoOcupacionCompleta = totalOcupacion,
                 ClientesPerdidos = s.ClientesPerdidos
             };
 
@@ -483,6 +489,7 @@ namespace TP4_Final
                     salida.Add(emp.TiempoOcupado.ToString("F4"));
                 }
                 salida.Add(Encuesta.Cola.Count.ToString());
+                salida.Add(RndDecisionEncuesta.ToString("F4"));
             }
 
             // 5) Tiempo total de espera por servicio

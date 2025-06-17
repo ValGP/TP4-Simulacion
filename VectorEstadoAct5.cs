@@ -227,10 +227,12 @@ namespace TP4_Final
 
         private Servicio CopiaServicio(Servicio s)
         {
+            var totalOcupacion = s.Empleados.Sum(e => e.TiempoOcupado);
+
             var c = new Servicio(s.Nombre, s.Empleados.Count)
             {
                 TotalClientesAtendidos = s.TotalClientesAtendidos,
-                TiempoAcumuladoOcupacionCompleta = s.TiempoAcumuladoOcupacionCompleta
+                TiempoAcumuladoOcupacionCompleta = totalOcupacion
             };
 
             c.Empleados = s.Empleados
